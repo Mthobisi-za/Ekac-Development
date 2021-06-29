@@ -1,0 +1,105 @@
+body {
+    width: 100%;
+    margin: 0;
+}
+
+.phone_section {
+    display: none;
+    width: 100%;
+}
+
+.laptop {
+    display: block;
+    width: 100%;
+}
+
+.menu_pp {
+    margin: 0;
+    width: 100%;
+    display: flex;
+    column-gap: 10px;
+    background: rgb(192, 185, 185);
+    box-shadow: gray 2px 2px;
+}
+
+.logo {
+    text-align: center;
+    font-family: sans-serif;
+}
+
+.conp {
+    width: 40%;
+}
+
+.info {
+    width: 40%;
+    display: flex;
+    column-gap: 10%;
+}
+
+.a_hh {
+    text-decoration: none;
+    color: rgb(108, 108, 145);
+}
+
+.cente {
+    text-align: center;
+}
+
+
+/*----====phone sec===----*/
+
+@media(max-width:500px) {
+    .laptop {
+        display: none;
+    }
+    .phone_section {
+        display: block;
+        width: 100%;
+    }
+    body {
+        margin: 0;
+        width: 100%;
+        height: auto;
+    }
+    .h2_p {
+        text-align: center;
+        margin: 0;
+    }
+    .menu_p {
+        display: block;
+        margin: 0;
+        width: 100%;
+    }
+    .hidden_info {
+        display: block;
+        background-color: white;
+        width: 30%;
+        left: -30%;
+        position: absolute;
+        transition: 1s;
+    }
+    .a_p {
+        text-align: right;
+        margin-left: auto;
+        position: absolute;
+        right: -0%;
+        margin-right: 5%;
+        margin-top: 5%;
+    }
+    .a_h {
+        text-decoration: none;
+        color: black;
+        margin-top: 7%;
+        text-align: center;
+    }
+    .h5 {
+        text-align: center;
+    }
+    .laptop {
+        display: none;
+    }
+}
+
+
+/*----====phone sec===----*/

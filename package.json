@@ -1,0 +1,11 @@
+{
+  "name": "ekac-development",
+  "version": "1.0.0",
+  "description": "\"Ekac development work\"",
+  "main": "index.js",
+  "scripts": {
+    "test": "app"
+  },
+  "author": "Mthobisi Ngubane",
+  "license": "ISC"
+}

@@ -1,0 +1,43 @@
+.divv {
+    position: absolute;
+    top: 100px;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    row-gap: 9px;
+    column-gap: 9px;
+    text-align: center;
+    margin: auto;
+}
+
+#id {
+    background: grey;
+    width: 50%;
+    margin-top: 0;
+}
+
+.phone_section {
+    background-color: rgb(209, 201, 201);
+}
+
+img {
+    width: 40%;
+    height: auto;
+}
+
+@media(max-width: 582px) {
+    img {
+        width: 40%;
+    }
+    .divv {
+        position: absolute;
+        top: 156px;
+    }
+}
+
+@media(max-width: 785px) {
+    img {
+        width: 40%;
+    }
+}

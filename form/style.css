@@ -1,0 +1,54 @@
+body {
+    background: rgb(182, 177, 177);
+    margin: 0;
+    width: 100%;
+}
+
+h2 {
+    text-align: center;
+}
+
+.form {
+    position: absolute;
+    width: 60%;
+    text-align: center;
+    margin: auto;
+    left: 20%;
+    top: 30%;
+    min-height: 259px;
+    background: gray;
+    border-radius: 5%;
+    display: flex;
+    flex-direction: column;
+    column-gap: 10px;
+}
+
+input {
+    width: 70%;
+    margin-left: 15%;
+    margin-top: 8%;
+    font-size: 18px;
+}
+
+button {
+    width: 35%;
+    margin-left: 32.5%;
+    font-size: 15px;
+}
+
+.img {
+    width: 70%;
+    height: auto;
+    margin: auto;
+    background: rgb(131, 130, 130);
+    text-align: center;
+    min-height: 350px;
+    border-radius: 5%;
+}
+
+img {
+    width: 90%;
+    max-width: 300px;
+    margin-top: 10%;
+    border-radius: 5%;
+}

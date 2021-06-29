@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../menu.css">
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-analytics.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-auth.js"></script>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ekac Admin Only</title>
+
+</head>
+
+<body>
+    <div class="form">
+        <h2>Sign In</h2>
+        <input type="password" name="" id="pass" placeholder="password"> <br> <br>
+        <input type="email" name="" id="emai" placeholder="email"> <br> <br>
+        <button id="btn">Submit</button>
+    </div>
+    <div class="dynamic" style="display: none;">
+        <h2>Welcome! Upload Picture</h2> <br> <br> <br>
+
+        <div class="formsup">
+            <input type="file" name="" id="file"> <br> <br> <br>
+        </div>
+        <button id="submit">Submit</button> <br> <br> <br>
+        <button id="signout">Log Out</button> <br> <br>
+        <h4 style="text-align: center;">Preview</h4>
+        <div class="img">
+            <img alt="">
+        </div>
+    </div>
+    <footer>
+        <div class="lk">
+            <h5 class="h55"> <a href="../index.html" class="a_hh">Home</a> <br></h5>
+            <h5 class="h55"><a href="../html/gallery.html" class="a_hh">Gallery</a> <br></h5>
+            <h5 class="h55"><a href="" class="a_hh">Contact Us</a></h5>
+            <h5 class="h55"> <a href="realForm.html" class="a_hh">LogIn</a> <br></h5>
+
+        </div>
+
+    </footer>
+    <script>
+        // Your web app's Firebase configuration
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        var firebaseConfig = {
+            apiKey: "AIzaSyAnG-P_f_pHhhX0hO-eYMQhWV2S_1hVphY",
+            authDomain: "ekac-development.firebaseapp.com",
+            projectId: "ekac-development",
+            storageBucket: "ekac-development.appspot.com",
+            messagingSenderId: "826115320326",
+            appId: "1:826115320326:web:9b4b6bff66b1f8d7557187",
+            measurementId: "G-PFXF9P66YB"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        firebase.analytics();
+        var db = firebase.firestore();
+        db.settings({
+            timestampInSnapshots: true
+        })
+    </script>
+    <script>
+        var db = firebase.firestore();
+        db.settings({
+                timestampInSnapshots: true
+            })
+            ///reference
+        var btn = document.querySelector("#btn");
+        var out = document.querySelector("#signout");
+        var div = document.querySelector(".dynamic");
+        var remove = document.querySelector(".form");
+        var kl = document.querySelector("#submit");
+        var file = document.querySelector("#file");
+        var img = document.querySelector("img");
+        var url;
+        ///reference
+        ///functions
+        firebase.auth().onAuthStateChanged((user) => {
+            if (user) {
+                // User is signed in, see docs for a list of available properties
+                // https://firebase.google.com/docs/reference/js/firebase.User
+                var uid = user.uid;
+                // ...
+                div.style.display = "block";
+                remove.style.display = "none";
+
+            } else {
+                // User is signed out
+                // ...
+                div.style.display = "none";
+                remove.style.display = "block"
+            }
+        });
+
+        function login() {
+            var password = document.querySelector("#pass").value;
+            var email = document.querySelector("#emai").value;
+            console.log(pass, email)
+            firebase.auth().signInWithEmailAndPassword(email, password)
+                .then((userCredential) => {
+                    // Signed in
+                    var user = userCredential.user;
+
+                    // ...
+                })
+                .catch((error) => {
+                    var errorCode = error.code;
+                    var errorMessage = error.message;
+                });
+        }
+
+        function signout() {
+            var password = document.querySelector("#pass").value;
+            var email = document.querySelector("#emai").value;
+            firebase.auth().signOut().then(() => {
+                // Sign-out successful.
+            }).catch((error) => {
+                // An error happened.
+            });
+        }
+
+        function setData() {
+            db.collection("imageData").add({
+                img: url
+            })
+            console.log(url)
+        }
+        file.addEventListener("change", (fil) => {
+            const fileR = new FileReader();
+            fileR.onload = () => {
+                img.src = fileR.result;
+                url = fileR.result;
+            }
+            fileR.readAsDataURL(file.files[0]);
+        });
+
+        ///functions
+        //event listeners
+        btn.addEventListener("click", login);
+        out.addEventListener("click", signout);
+        kl.addEventListener("click", setData)
+    </script>
+</body>
+
+</html>
